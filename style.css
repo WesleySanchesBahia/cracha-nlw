@@ -1,55 +1,83 @@
-@charset "utf-8";
-
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
 *{
     margin: 0;
 }
 html,
 body{
     --black: hsl(240, 6%, 13%);
-    --grey: hsl(240, 9%, 89%); /* --grey é uma variavel que pode ser usada em todo css */
+    --grey: hsl(240, 9%, 89%); 
     height: 100%;
     font-family: 'Roboto', sans-serif;
-    -webkit-font-smoothing: antialiased; /* Deixa a fonte mais refinada */
+    -webkit-font-smoothing: antialiased; 
 }
 
 body{
-    display: grid;/* display grid é como se fosse um flex box divido em coluna e linhas  */
-    place-items: center; /* Deixa o conteudo centralizado */
+    display: grid;
+    place-items: center;
+    background: url(images/Desktop.svg) no-repeat center/cover;
+    background-color: #121214;
 }
+
+.faixa{
+    display: flex;
+    flex-direction: column;
+    height: 168px;
+}
+
+
 
 main{
-    background: url(images/Mobile.png);
-    width: 375px;
-    height: 812px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: url(images/DesktopCard.svg) no-repeat center;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
 }
 
+main:hover{
+    transform: translateY(20deg);
+
+}
+
+
 .container{
-    max-width: 250px;
+    display: flex;
+    flex-direction: column;
+    max-width: 358px;
+    width: 100vw;
+    max-height: 541px;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
-    color: var(--grey)
-
+    color: var(--grey);
 }
+
 
 .avatar {
     width: 10rem;
-    margin: 11.5rem auto 0;
-    position: relative; /* torna todos os filhos relativo  a essa div */
+    margin: 3.2rem auto 0;
+    position: relative; 
 }
-/* aqui ta pegando span dentro da div avatar */
+
 .avatar span {
     position: absolute;
     top: -15px;
     z-index: 1;
+    -webkit-animation:spin 8s linear infinite;
+    -moz-animation:spin 8s linear infinite;
+    animation:spin 8s linear infinite;
 }
-/* aqui ta apontando a tag img que ta no primeiro nivel dentro da div avatar */
+
 .avatar > img{
     width: 10rem;
     height: 11.5rem;
-    object-fit: cover; /* ajusta o conteudo que ficou distorcido pelo width e heigth */
+    object-fit: cover; 
 
-    clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%); /* Aqui faz referencia objeto geometrico utlizado na imagem site de figuras geometricas https://bennettfeely.com/clippy/ */
+    clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%); 
 }
 
 h1{
@@ -60,7 +88,7 @@ h1{
 }
 
 a{
-    color: var(--grey); /* aqui está sendo usado a variavel defida no body */
+    color: var(--grey); 
     text-decoration: none;
     margin-top: 0.25rem;
     display: flex;
@@ -76,9 +104,68 @@ p{
 ul{
     margin-top: 4rem;
 
-    list-style: none; /* list-style: none retira as bolinhas da ul */
+    list-style: none; 
     padding: 0;
     display: flex;
-    gap: 0.5rem; /* Gap da espaçamento entre os conteudos  */
+    gap: 2rem;
     justify-content: center;
+}
+
+.ico{
+    font-size: 30px;
+}
+
+.ico:hover{
+    color: rgb(248, 162, 44);
+}
+
+@media screen and (max-width: 1800px) {
+    .faixa{
+        display: flex;
+        flex-direction: column;
+        width: 60px;
+        max-height: 130px;
+    }
+
+    
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: url(images/DesktopCard.svg) no-repeat center;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+}
+
+.avatar > img{
+    width: 10rem;
+    height: 11.5rem;
+    object-fit: cover; 
+
+    clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%); 
+}
+
+
+    
+}
+
+
+@media screen and (max-width: 667px) {
+    .faixa{
+        display: none;
+    }
+    main{
+        background: url(images/Mobile.svg) no-repeat center;
+        width: 100vw;
+        min-height: 812px;
+        height: 100vh;
+    }
+
+    .avatar {
+        width: 10rem;
+        margin: 11.4rem auto 0;
+        position: relative; 
+    }
+
 }
