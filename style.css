@@ -1,0 +1,84 @@
+@charset "utf-8";
+
+*{
+    margin: 0;
+}
+html,
+body{
+    --black: hsl(240, 6%, 13%);
+    --grey: hsl(240, 9%, 89%); /* --grey é uma variavel que pode ser usada em todo css */
+    height: 100%;
+    font-family: 'Roboto', sans-serif;
+    -webkit-font-smoothing: antialiased; /* Deixa a fonte mais refinada */
+}
+
+body{
+    display: grid;/* display grid é como se fosse um flex box divido em coluna e linhas  */
+    place-items: center; /* Deixa o conteudo centralizado */
+}
+
+main{
+    background: url(images/Mobile.png);
+    width: 375px;
+    height: 812px;
+}
+
+.container{
+    max-width: 250px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    color: var(--grey)
+
+}
+
+.avatar {
+    width: 10rem;
+    margin: 11.5rem auto 0;
+    position: relative; /* torna todos os filhos relativo  a essa div */
+}
+/* aqui ta pegando span dentro da div avatar */
+.avatar span {
+    position: absolute;
+    top: -15px;
+    z-index: 1;
+}
+/* aqui ta apontando a tag img que ta no primeiro nivel dentro da div avatar */
+.avatar > img{
+    width: 10rem;
+    height: 11.5rem;
+    object-fit: cover; /* ajusta o conteudo que ficou distorcido pelo width e heigth */
+
+    clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%); /* Aqui faz referencia objeto geometrico utlizado na imagem site de figuras geometricas https://bennettfeely.com/clippy/ */
+}
+
+h1{
+    font-size: 1.5em;
+
+    margin-top: 1.5rem;
+
+}
+
+a{
+    color: var(--grey); /* aqui está sendo usado a variavel defida no body */
+    text-decoration: none;
+    margin-top: 0.25rem;
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    align-items: center;
+}
+
+p{
+    margin-top: 2rem;
+}
+
+ul{
+    margin-top: 4rem;
+
+    list-style: none; /* list-style: none retira as bolinhas da ul */
+    padding: 0;
+    display: flex;
+    gap: 0.5rem; /* Gap da espaçamento entre os conteudos  */
+    justify-content: center;
+}
